@@ -11,7 +11,14 @@ npm install
 Для проверки задания достаточно скопировать папку с набором тесткейсов и файла с решением.
 Файл с решением должен иметь название solution.ts
 
+
 ![Пример с решением](./documentation/solution_example.png)
+
+```typescript
+export default (a: string): string => {
+  return a.length.toString();
+}
+```
 
 Запуск тестов
 
