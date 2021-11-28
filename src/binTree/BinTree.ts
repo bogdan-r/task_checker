@@ -15,7 +15,29 @@ export class BinTree {
   }
 
   public remove(item: number): void {
+    const node = this.search(item);
+    if(!node) throw new Error("Node not found");
 
+    if (!node.leftNode && !node.rightNode) {
+      if(node.parent) {
+        this.removeChild(node);
+      } else {
+        this.root = undefined;
+      }
+    } else if (node.leftNode && node.rightNode) {
+
+    } else {
+      const childNode = node.leftNode || node.rightNode;
+
+      if (node.parent) {
+
+      }
+    }
+  }
+
+  public removeChild(node: Node) {
+    node.leftNode = undefined;
+    node.rightNode = undefined;
   }
 
   private insertNode(node: Node, item: number) {
@@ -50,6 +72,10 @@ class Node {
     return this._item;
   }
 
+  set item(value: number) {
+    this._item = value;
+  }
+
   get rightNode(): Node {
     return <Node>this._rightNode;
   }
@@ -58,24 +84,29 @@ class Node {
     return <Node>this._parent;
   }
 
-  set rightNode(value: Node) {
+  set rightNode(value: Node | undefined) {
     this._rightNode = value;
   }
   get leftNode(): Node {
     return <Node>this._leftNode;
   }
 
-  set leftNode(value: Node) {
+  set leftNode(value: Node | undefined) {
     this._leftNode = value;
   }
 
   private readonly _parent: Node | undefined;
   private _leftNode: Node | undefined;
   private _rightNode: Node | undefined;
-  private readonly _item: number;
+  private _item: number;
 
   constructor(item: number, parent?: Node) {
     this._item = item;
     this._parent = parent;
   }
+  
+  public removeChild(nodeToRemove: Node) {}
+  public replaceChild() {}
+
+  static copyNode(first, second) {}
 }
